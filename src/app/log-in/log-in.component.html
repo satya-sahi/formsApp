@@ -1,0 +1,31 @@
+<ng-container>
+
+    <div class="container d-flex align-content-center justify-content-center vh-100">
+        <div class="card py shadow-lg" style="max-width: 300px; max-height: 350px; align-self: center;">
+            <div class="card-title">
+                <h3 class="title" style="text-align: center;">Login</h3>
+            </div>
+            <div class="card-body" style="max-height: 200px;">
+                <form>
+                    <div class="form-group mb-3">
+                        <label class="title">Username</label>
+                        <input class="form-control" type="text" id="username" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="username" required (input)="submit()" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="title">Password</label>
+                        <input class="form-control" type="password" id="password" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="password" required (input)="submit()" /><br>
+                    </div>
+                </form>
+            </div>
+            <button class="btn btn-success" type="submit" [disabled]="logindisables" (click)="login()">Login</button>
+            <button class="btn btn-primary mt-3" type="submit" (click)="forgotPassword()">Forgot Password</button>
+            <div *ngIf="message" class="alert"
+                [ngClass]="{'alert-success': response=='success', 'alert-danger': response=='danger'}">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+</ng-container>

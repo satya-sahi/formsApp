@@ -1,0 +1,31 @@
+.title {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    text-align: center;
+   }
+   
+   .sub-title {
+       font-weight: 300;
+       color: #666;
+       margin-top: 1em;
+       width: 80%;
+       margin-left: auto;
+       margin-right: auto;
+       line-height: 1.5;
+       text-align: center;
+   }
+   .navbar ul {
+       display: flex;
+       margin: 0;
+       padding: 0;
+       justify-content: space-around;
+       list-style-type: none;
+   }
+   .navbar ul li a {
+       color: rgb(236, 102, 102);
+       text-decoration: none;
+       padding: 0.5em 1em;
+       font-weight: bold;
+    }
+   

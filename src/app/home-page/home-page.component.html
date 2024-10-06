@@ -1,0 +1,38 @@
+<app-navbar-common></app-navbar-common>
+<div class="container" ngSkipHydration>
+    <h1 class="title">Please select from the list of films for rental!</h1>
+
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Rental Rate</th>
+                <th>Replacement Cost</th>
+                <th>Select Film</th>
+                <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of paginatedFilms">
+                    <td>{{f.title}}</td>
+                    <td>{{f.description}}</td>
+                    <td>{{f.rating}}</td>
+                    <td>{{f.rental_rate}}</td>
+                    <td>{{f.replacement_cost}}</td>
+                    <td><input type="checkbox"  (change)="addFilm(f)" /></td>
+                    <td><button type="submit" (click)="editfilm(f)" class="btn btn-light"><i class="fas fa-edit"></i></button></td>
+                    <td><button type="submit"(click)="deletefilm(f)" class="btn btn-light"><i class="fa-solid fa-trash"></i></button></td>
+                </tr>
+                <tr><button class="btn btn-success"  (click)="CheckoutModal()">Checkout</button></tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button class="btn btn-light" (click)="changePage(currentPage-1)" [disabled]="currentPage===1">Previous</button>
+            <span style="font-size: medium; font-weight: bold;">{{currentPage}}</span>
+            <button class="btn btn-light" (click)="changePage(currentPage+1)" [disabled]="currentPage*itemsPerPage>=films.length">Next</button>
+        </div>
+    </div>
+</div>

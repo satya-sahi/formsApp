@@ -1,0 +1,60 @@
+<app-navbar-common></app-navbar-common>
+<ng-container>
+    <div class="container">
+        <h2>Please answer the following survey details.</h2>
+        <form [formGroup]="myFilm" (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input class="form-control" id="title" type="text" formControlName="title" required />
+                <div *ngIf="myFilm.controls['title'].invalid"><span class="text-danger">Title is required</span></div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input class="form-control" id="description" type="description"  formControlName="description" required />
+                <!-- <div *ngIf="myFilm.controls['description'].touched"><span class="text-danger">Description is required</span></div> -->
+                <div *ngIf="myFilm.controls['description'].invalid"><span class="text-danger">Please enter a valid description</span></div>
+            </div>
+
+            <div class="form-group">
+                <label for="releaseYear">Release Year:</label>
+                <input class="form-control" id="releaseYear" type="number"  formControlName="releaseYear" required />
+                <!-- <div *ngIf="myFilm.controls['releaseYear'].touched"><span class="text-danger">Contact number is required</span></div> -->
+                <!-- <div *ngIf="myFilm.controls['releaseYear'].invalid"><span class="text-danger">Please enter a valid phone number.</span></div> -->
+            </div>
+            <div class="form-group">
+                <label >The maximum duration the film can be rented(days):</label>
+                <input class="form-control" id="rentDuration" type="number" formControlName="rentDuration" required />
+                <div *ngIf="myFilm.controls['rentDuration'].invalid"><span class="text-danger">Required field</span></div>
+            </div>
+            <div class="form-group">
+                <label for="ratingOpts">Choose from the following ratings:</label>
+                <select formControlName="rating" class="form-control" id="ratingOpts">
+                  <option *ngFor="let option of ratingOptions" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="languageOptions">Choose from the following languages:</label>
+                <select formControlName="language" class="form-control" id="languageOptions">
+                  <option [value] =''>Select a language</option>
+                  <option *ngFor="let option of languagesList" [value]="option.language_id">{{ option.name }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Rental Rate:</label>
+                <input class="form-control" id="rentalRate" type="number" formControlName="rentalRate" required />
+                <div *ngIf="myFilm.controls['rentalRate'].invalid"><span class="text-danger">Required field</span></div>
+            </div>
+            <div class="form-group">
+                <label>Replacement Cost</label>
+                <input type="number" class="form-control" formControlName="replacementCost" required />
+                <div *ngIf="myFilm.controls['replacementCost'].invalid"><span class="text-danger">Required field</span></div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="myFilm.invalid">Add/Edit film</button>
+            </div>
+
+        </form>
+    </div>
+</ng-container>
